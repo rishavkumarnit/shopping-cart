@@ -1,32 +1,53 @@
-
+import Home from "./Components/Home";
+import Cart from "./Components/Cart";
+import CheckOut from "./Components/CheckOut";
+import Product from "./Components/Product";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createContext, useState } from "react";
+import Profile from "./Components/Profile";
+import { store } from "./Components/slices/store";
+import { Provider } from "react-redux";
+// eslint-disable-next-line react-refresh/only-export-components
+export const User = createContext();
 
 function App() {
+  const [profile, setProfile] = useState({
+    userName: "Profile",
+    email: "",
+    address: "",
+  });
 
-  const images = [
-    "https://picsum.photos/id/1011/200/200",
-    "https://picsum.photos/id/1012/200/200",
-    "https://picsum.photos/id/1013/200/200",
-    "https://picsum.photos/id/1015/200/200",
-    "https://picsum.photos/id/1016/200/200",
-    "https://picsum.photos/id/1018/200/200",
-  ];
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/product/:id",
+      element: <Product />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
+    },
+    {
+      path: "/checkout",
+      element: <CheckOut />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
+    },
+    { path: "/checkout", element: <CheckOut /> },
+  ]);
+
   return (
     <>
-      <div className="bg-amber-500">sdasasaas</div>
-       <div className="w-full overflow-hidden bg-gray-100 py-6">
-      {/* Outer container */}
-      <div className="flex animate-marquee">
-        {/* Duplicate list for seamless looping */}
-        {[...images, ...images].map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`logo-${i}`}
-            className="w-24 h-24 mx-4 rounded-full object-cover shadow-md"
-          />
-        ))}
-      </div>
-    </div>
+      <Provider store={store}>
+        <User.Provider value={{ profile, setProfile }}>
+          <RouterProvider router={router} />
+        </User.Provider>
+      </Provider>
     </>
   );
 }
