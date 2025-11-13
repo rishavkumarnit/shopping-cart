@@ -48,6 +48,3 @@ Build a responsive shopping cart app with dynamic product display, search and ca
 | 🎨 Tailwind CSS v4 | Styling & responsiveness |
 | 🧭 React Router | Navigation & routing |
 
----
-
-## 🔗 Routes
