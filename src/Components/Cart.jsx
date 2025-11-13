@@ -48,18 +48,15 @@ const Cart = () => {
               return (
                 <div
                   key={item.id}
-                  className="flex gap-6  w-[70%] h-15 items-center rounded-xl bg-gray-400 my-4 mx-auto justify-center"
+                  className="flex flex-wrap sm:gap-8 gap-1 text-[70%] sm:text-[100%] w-[80%] sm:w-[50%] h-15 items-center rounded-xl bg-gray-400 my-4 mx-auto justify-center"
                 >
                   <img
                     src={item.image}
                     alt={item.productName}
-                    className="h-full w-10 rounded"
+                    className="h-full w-10 hidden sm:block rounded"
                   />
-                  <p>{item.id}</p>
                   <p>{item.productName}</p>
                   <p>Rs {item.price}</p>
-
-                  <p>{item.description}</p>
                   <button
                     onClick={() => handleIncreaseCount(item)}
                     className="bg-green-300 h-5 w-6 pb-5 rounded-2xl hover:cursor-pointer"
@@ -82,7 +79,7 @@ const Cart = () => {
                 </div>
               );
             })}
-            <div className="flex gap-4 h-14 bg-gray-500 rounded-xl w-[40%] font-semibold mx-auto items-center justify-center">
+            <div className="flex gap-4 text-[70%] sm:text-[100%] h-14 bg-gray-500 rounded-xl w-[50%] sm:font-semibold mx-auto items-center justify-center">
               <div>
                 <span>Total items-</span>
                 <span>{totalItems}</span>
