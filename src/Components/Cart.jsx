@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import {
   setItems,
   removeItem,
+  clearCart,
 } from "../Components/slices/CartSlice";
 
 const Cart = () => {
@@ -27,6 +28,9 @@ const Cart = () => {
     } else {
       dispatch(setItems({ ...product, count }));
     }
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
   useEffect(() => {}, [cart]);
   return (
@@ -92,7 +96,10 @@ const Cart = () => {
         )}
 
         <Link to={"/checkout"}>
-          <button className="fixed bottom-10 w-30 hover:cursor-pointer bg-green-200 rounded-2xl right-5">
+          <button
+            onClick={() => handleClearCart()}
+            className="fixed bottom-10 w-30 hover:cursor-pointer bg-green-200 rounded-2xl right-5"
+          >
             Checkout
           </button>
         </Link>
