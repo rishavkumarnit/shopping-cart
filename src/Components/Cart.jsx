@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import {
   setItems,
   removeItem,
-  setTotalItems,
 } from "../Components/slices/CartSlice";
 
 const Cart = () => {
@@ -16,18 +15,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   const handleRemoveItems = (id) => {
     dispatch(removeItem(id));
-    // dispatch(setTotalItems());
   };
   const handleIncreaseCount = (product) => {
     let count = product.count + 1;
     dispatch(setItems({ ...product, count }));
-    // dispatch(setItems(product));
-    // dispatch(setTotalItems());
-    // const updatedList = productList.map((item) =>
-    //   item.id === product.id ? { ...item, added: !item.added } : item
-    // );
-    // setProductList(updatedList);
-    console.log(cart);
   };
   const handleDecreaseCount = (product) => {
     let count = product.count - 1;

@@ -5,7 +5,6 @@ import { products } from "./Products";
 import {
   setItems,
   removeItem,
-  setTotalItems,
 } from "../Components/slices/CartSlice";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -21,7 +20,6 @@ const Product = () => {
       (item) => item.id.toString() === id.toString()
     );
     setProduct(foundProduct);
-    console.log(cart);
   }, [cart, id]);
 
   const isInCart = cart.some((item) => item.id === product?.id);
@@ -29,13 +27,10 @@ const Product = () => {
   const handleAddToCart = () => {
     let count = 1;
     dispatch(setItems({ ...product, count }));
-    // dispatch(setTotalItems());
-    console.log(cart);
   };
 
   const handleRemoveFromCart = () => {
     dispatch(removeItem(product.id));
-    // dispatch(setTotalItems());
   };
 
   if (!product) {

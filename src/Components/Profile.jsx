@@ -34,7 +34,6 @@ const Profile = () => {
       alert("Enter a valid email");
       return;
     }
-    console.log(profile);
     setProfile({
       userName: signIn.userName,
       email: signIn.email,

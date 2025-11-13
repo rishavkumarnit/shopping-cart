@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import {
   setItems,
   removeItem,
-  setTotalItems,
 } from "../Components/slices/CartSlice";
 
 const Home = () => {
@@ -60,18 +59,14 @@ const Home = () => {
   const handleAddToCart = (product) => {
     let count = 1;
     dispatch(setItems({ ...product, count }));
-    // dispatch(setItems(product));
-    // dispatch(setTotalItems());
     const updatedList = productList.map((item) =>
       item.id === product.id ? { ...item, added: !item.added } : item
     );
     setProductList(updatedList);
-    console.log(cart);
   };
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeItem(id));
-    // dispatch(setTotalItems());
     const updatedList = productList.map((item) =>
       item.id === id ? { ...item, added: !item.added } : item
     );
